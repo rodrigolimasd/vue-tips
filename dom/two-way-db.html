@@ -1,0 +1,43 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <input type="text" v-model="title">
+    <p>{{ title }}</p>
+    <hr>
+    <button v-on:click="sum">Sum</button>
+    <button v-on:click="count2++">Sum2</button>
+    <button v-on:click="decrease">Decrease</button>
+    <p>Count: {{ count }} | {{ count2 }}</p>
+    <p>Result: {{ result }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Welcome Vue.js 2',
+            count: 0,
+            count2: 0
+        },
+        watch: {
+            count(newValue, oldValue) {
+                setTimeout(()=>{
+                    this.count = 0
+                }, 2000)
+            }
+        },
+        computed:{
+            result() {
+                return this.count >= 5 ? 'greater than 5' : 'less than 5'
+            }
+        },
+        methods: {
+            sum() {
+                this.count++
+            },
+            decrease() {
+                this.count--
+            }
+        }
+    })
+</script>
