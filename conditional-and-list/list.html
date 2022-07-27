@@ -1,0 +1,52 @@
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<style>
+    ul {
+        list-style: none;
+    }
+</style>
+
+<div id="app">
+    <ul>
+        <li v-for="(color, index) in colors" :key="color" :value="color">{{ index }}) {{ color }}</li>
+    </ul>
+    <button @click="colors.push('white')">Add</button>
+    <hr>
+    <template v-for="(color, index) in colors">
+        <h1>{{ color }}</h1>
+        <p>{{ index }}</p>
+    </template>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Weight</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="p in people">
+                <td>{{p.name}}</td>
+                <td>{{p.age}}</td>
+                <td>{{p.weight}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <span v-for="n in 10">{{ n }}</span>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            colors: ['red','green','yeloow','blue'],
+            people: [
+                { name: 'Anne', age: 26, weight: 59 },
+                { name: 'Peter', age: 22, weight: 89 }
+                ]
+        }
+    })
+</script>
