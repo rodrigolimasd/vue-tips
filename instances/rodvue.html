@@ -1,0 +1,41 @@
+<meta charset="UT-8">
+
+<div id="app">
+    {{ name }} {{ lastname }} {{ 1 + 1 }}
+</div>
+
+<script>
+    function RodVue(params) {
+        this.$el = document.querySelector(params.el)
+        this.$data = params.data
+
+        for(let atr in this.$data) {
+            //this.name(get,set) and this.lastname(get,set)
+            Object.defineProperty(this, atr, {
+                get: () => {
+                    return this.$data[atr]
+                },
+                set: value => {
+                    this.$data[atr] = value
+                }
+            })
+        }
+
+        //interpolation
+        const regex = /\{\{([\s\w+]*)\}\}/g //[name,lastname,1 + 1]
+
+        this.$el.innerHTML = this.$el.innerHTML.replace(regex, (match, $1)=> {
+            console.log($1)
+            const value = this[$1.trim()] //get property instance
+            return value ? value : eval($1)
+        })
+    }
+
+    new RodVue({
+        el: '#app',
+        data: {
+            name: 'Rodrigo',
+            lastname: 'Lima'
+        }
+    })
+</script>

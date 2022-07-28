@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app1">
+    {{title1}} {{title2}}
+    <button @click="add">add</button>
+</div>
+
+<div id="app2">
+    {{title1}} {{title2}}
+</div>
+
+<script>
+    var vm1 = new Vue({
+        el: '#app1',
+        data: {
+            title1: 'Vue 1'
+        },
+        methods: {
+            add() {
+                vm2.title2 += " >> "+ this.title1
+            }
+        }
+    })
+    var vm2 = new Vue({
+        el: '#app2',
+        data: {
+            title2: 'Vue 2'
+        }
+    })
+</script>
