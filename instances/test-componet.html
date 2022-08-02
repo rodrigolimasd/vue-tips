@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <comp></comp>
+    <comp></comp>
+    <comp></comp>
+</div>
+
+<script>
+    Vue.component('comp', {
+        template: `
+           <div>
+                {{title}}
+                <button @click="add">add</button>
+            </div>
+        `,
+        data: function() {
+            return {
+                title: 'Vue'
+            } 
+        },
+        methods: {
+            add() {
+                this.title += "$$"
+            }
+        }
+    })
+    
+    var vm = new Vue({
+        el: '#app',
+    })
+</script>
