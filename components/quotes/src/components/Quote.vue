@@ -1,14 +1,11 @@
 <template>
     <div class="quote">
-        {{ text }}
+        <slot></slot>
     </div>
 </template>
 
 <script>
 export default {
-    props: {
-        text: String
-    }
 
 }
 </script>
