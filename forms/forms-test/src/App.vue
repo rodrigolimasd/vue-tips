@@ -2,7 +2,7 @@
 	<div id="app">
 		<h1>File a claim</h1>
 		<div class="content">
-			<form class="panel">
+			<form class="panel" v-if="!sent">
 				<div class="header">Form</div>
 				<LabelApp name="E-mail">
 					<input type="text" v-model.lazy.trim="user.email">
@@ -53,9 +53,9 @@
 					<Choice v-model="choice" />
 				</LabelApp>
 				<hr>
-				<button>Send</button>
+				<button @click.prevent="send">Send</button>
 			</form>
-			<div class="panel">
+			<div class="panel" v-else>
 				<div class="header">Result</div>
 				<LabelApp name="E-mail">
 					<span>{{user.email}}</span>
@@ -113,7 +113,13 @@ export default {
 				password: '',
 				age: 25
 			},
-			choice: true
+			choice: true,
+			sent: false
+		}
+	},
+	methods: {
+		send() {
+			this.sent = true
 		}
 	}
 }
