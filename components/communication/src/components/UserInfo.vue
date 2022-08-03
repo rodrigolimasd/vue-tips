@@ -35,7 +35,8 @@ export default {
         }
     },
     created() {
-        bus.$on('changeAge', (age) => this.age = age)
+       // bus.$on('changeAge', (age) => this.age = age)
+       bus.whenAgeChange(age => this.age = age)
     }
 }
 </script>
