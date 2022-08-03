@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import bus from './bus'
+
 export default {
     props: {
         name: {
@@ -30,7 +32,10 @@ export default {
         resetName() {
             this.name = 'Rodrigo'
             this.$emit('nameChange', this.name)
-        },
+        }
+    },
+    created() {
+        bus.$on('changeAge', (age) => this.age = age)
     }
 }
 </script>

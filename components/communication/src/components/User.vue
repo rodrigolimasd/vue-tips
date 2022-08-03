@@ -13,8 +13,8 @@
                 @nameChange="name = $event" 
                 :resetNameFn="resetName" />
             <app-user-edit 
-                :age="age"
-                @changeAge="age = $event"/>
+                :age="age"/>
+                <!-- @changeAge="age = $event"/> -->
         </div>
     </div>
 </template>
