@@ -40,8 +40,13 @@
 					</span>
 				</LabelApp>
 				<LabelApp name="Priority">
-					<select name="" id="">
-						<option></option>
+					<select v-model="priority">
+						<option v-for="p in priorities" 
+							:key="p.code" 
+							:value="p.code"
+							:selected="p.code === 1">
+							{{ p.name }}
+						</option>
 					</select>
 				</LabelApp>
 				<LabelApp name="First Complaint?">
@@ -75,7 +80,7 @@
 					<span>{{product}}</span>
 				</LabelApp>
 				<LabelApp name="Priority">
-					<span>???</span>
+					<span>{{priority}}</span>
 				</LabelApp>
 				<LabelApp name="First Complaint?">
 					<span>???</span>
@@ -97,6 +102,12 @@ export default {
 			message: '',
 			features: [],
 			product: "web",
+			priority: 1,
+			priorities:[
+				{ code: 1, name: 'Low'},
+				{ code: 2, name: 'Moderate'},
+				{ code: 3, name: 'High'}
+			],
 			user: {
 				email: '',
 				password: '',
