@@ -50,7 +50,7 @@
 					</select>
 				</LabelApp>
 				<LabelApp name="First Complaint?">
-					<Choice />
+					<Choice v-model="choice" />
 				</LabelApp>
 				<hr>
 				<button>Send</button>
@@ -83,7 +83,7 @@
 					<span>{{priority}}</span>
 				</LabelApp>
 				<LabelApp name="First Complaint?">
-					<span>???</span>
+					<span>{{choice}}</span>
 				</LabelApp>
 			</div>
 		</div>
@@ -112,7 +112,8 @@ export default {
 				email: '',
 				password: '',
 				age: 25
-			}
+			},
+			choice: true
 		}
 	}
 }
