@@ -1,6 +1,11 @@
 <template>
 	<div id="app" class="container">
 		<h1>HTTP with Axios</h1>
+		<b-alert show dismissible v-for="m in messages" 
+				:key="m.text"
+				:variant="m.type">
+			{{ m.text }}
+		</b-alert>
 		<b-card>
 			<b-form-group label="Name: ">
 				<b-form-input type="text" size="lg"
@@ -38,6 +43,7 @@
 export default {
 	data() {
 		return {
+			messages: [],
 			users: [],
 			id: null,
 			user: {
@@ -51,16 +57,24 @@ export default {
 			this.user.name = ''
 			this.user.email = ''
 			this.id = null
+			this.messages = []
 		},
 		load(id){
 			this.id = id
 			this.user = { ...this.users[id]}
 		},
 		remove(id){
-			this.$http.delete(`/user/${id}.json`)
+			this.$http.delete(`/user/${id}`)
 			.then(() => {
 				this.clear()
 				this.getUsers()
+			})
+			.catch(err => {
+				console.log('ERRORR:  ', err)
+				this.messages.push({
+					text: 'Error on remove!',
+					type: 'danger'
+				})
 			})
 		},
 		save() {
@@ -70,6 +84,10 @@ export default {
 				.then(() => {
 					this.clear()
 					this.getUsers()
+					this.messages.push({
+						text: 'Save with success!',
+						type: 'success'
+					})
 				})
 			// this.$http.post('user.json', this.user)
 			// 	.then(res => this.clear())
