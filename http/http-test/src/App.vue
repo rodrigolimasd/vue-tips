@@ -24,6 +24,11 @@
 				<strong>Name: </strong> {{ u.name}}<br>
 				<strong>Email: </strong> {{ u.email}}<br>
 				<strong>ID: </strong> {{ id }}<br>
+				<b-button variant="warning" size="lg"
+					@click="load(id)">Load</b-button>
+					<b-button variant="danger" size="lg"
+					class="ml-2" 
+					@click="remove(id)">Remove</b-button>
 			</b-list-group-item>
 		</b-list-group>
 	</div>
@@ -34,6 +39,7 @@ export default {
 	data() {
 		return {
 			users: [],
+			id: null,
 			user: {
 				name: '',
 				email: ''
@@ -41,16 +47,40 @@ export default {
 		}
 	},
 	methods: {
+		clear() {
+			this.user.name = ''
+			this.user.email = ''
+			this.id = null
+		},
+		load(id){
+			this.id = id
+			this.user = { ...this.users[id]}
+		},
+		remove(id){
+			this.$http.delete(`/user/${id}.json`)
+			.then(() => {
+				this.clear()
+				this.getUsers()
+			})
+		},
 		save() {
-			this.$http.post('user.json', this.user)
-				.then(res => {
-						this.user.name = ''
-						this.user.email = ''
-					})
+			const method = this.id ? 'patch' : 'post'
+			const endUrl = this.id ? `/${this.id}.json` : '.json'
+			this.$http[method](`/user${endUrl}`, this.user)
+				.then(() => {
+					this.clear()
+					this.getUsers()
+				})
+			// this.$http.post('user.json', this.user)
+			// 	.then(res => this.clear())
 		},
 		getUsers() {
 			this.$http.get('user.json')
 				.then(res => this.users = res.data)
+		},
+		getToken() {
+			//get token
+			this.$http.defaults.headers.common['Authorization'] = "token"
 		}
 	},
 	created() {
@@ -60,6 +90,7 @@ export default {
 		// }).then(res => {
 		// 	console.log(res)
 		// })
+		this.getUsers()
 	}
 
 }
