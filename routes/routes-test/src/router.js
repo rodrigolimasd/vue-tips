@@ -10,19 +10,20 @@ import MenuPt from './components/template/MenuPt'
 
 Vue.use(Router)
 
-export default new Router({
+ const router = new Router({
     mode: 'history',
     scrollBehavior(to, from, savedPosition){
         if(savedPosition) {
             return savedPosition
         }
-        else if (to.hash) {
-            return {
-              selector: to.hash,
-              behavior: 'smooth'
-              // , offset: { x: 0, y: 10 }
-            }
-        } else {
+        // else if (to.hash) {
+        //     return {
+        //       selector: to.hash,
+        //       behavior: 'smooth'
+        //       // , offset: { x: 0, y: 10 }
+        //     }
+        // } 
+        else {
             return { x:0, y: 0 }
         }
     },
@@ -47,7 +48,10 @@ export default new Router({
         props: true,
         children: [
             { path: '', component: UserList },
-            { path: ':id', component: UserDetails, props: true },
+            { path: ':id', component: UserDetails, props: true,
+            beforeEnter: (to, from, next) => {
+                next()
+            } },
             { path: ':id/edit', component: UserEdit, props: true,
             name: 'editUserRoute' },
         ]
@@ -60,3 +64,10 @@ export default new Router({
     }
     ]
 })
+
+router.beforeEach((to, from, next) => {
+
+    next()
+})
+
+export default router
