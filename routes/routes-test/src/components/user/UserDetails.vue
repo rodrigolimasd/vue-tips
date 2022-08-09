@@ -8,7 +8,8 @@
             Edit
         </router-link> -->
         <router-link tag="button" primario
-            :to="{ name: 'editUserRoute', params: {id } }">
+            :to="{ name: 'editUserRoute', params: {id }, 
+            query: { comp: true, lang: 'en'} }">
             Edit
         </router-link>
     </div>
