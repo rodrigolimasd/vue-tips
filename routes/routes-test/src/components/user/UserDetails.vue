@@ -9,7 +9,7 @@
         </router-link> -->
         <router-link tag="button" primario
             :to="{ name: 'editUserRoute', params: {id }, 
-            query: { comp: true, lang: 'en'} }">
+            query: { comp: true, lang: 'en'}, hash:'#footer' }">
             Edit
         </router-link>
     </div>
