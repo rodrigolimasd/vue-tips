@@ -3,7 +3,11 @@
 		<h1>Routes with VueRouter</h1>
 		<!-- <Menu /> -->
 		<router-view name="menu"></router-view>
-		<router-view />
+		<transition mode="out-in"
+			enter-active-class="animated rubberBand"
+			leave-active-class="animated rollOut">
+			<router-view />
+		</transition>
 		<router-view name="menuBottom"></router-view>
 	</div>
 </template>

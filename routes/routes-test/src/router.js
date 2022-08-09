@@ -37,6 +37,12 @@ export default new Router({
             { path: ':id/edit', component: UserEdit, props: true,
             name: 'editUserRoute' },
         ]
+    }, {
+        path: "/redirect",
+        redirect: "/user"
+    }, {
+        path: "/*",
+        redirect: "/"
     }
     ]
 })
