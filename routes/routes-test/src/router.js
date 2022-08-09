@@ -3,12 +3,16 @@ import Router from 'vue-router'
 import Start from './components/Start'
 import User from './components/user/User'
 import UserList from './components/user/UserList'
-import UserDetails from './components/user/UserDetails'
-import UserEdit from './components/user/UserEdit'
+//import UserDetails from './components/user/UserDetails'
+//import UserEdit from './components/user/UserEdit'
 import Menu from './components/template/Menu'
 import MenuPt from './components/template/MenuPt'
 
 Vue.use(Router)
+
+//lazy load user.js
+const UserEdit = () => import(/* webpackChunkName: "user" */'./components/user/UserEdit')
+const UserDetails = () => import(/* webpackChunkName: "user" */'./components/user/UserDetails')
 
  const router = new Router({
     mode: 'history',
