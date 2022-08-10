@@ -31,15 +31,9 @@ export default {
         total() {
             return this.products.map(p => p.amout * p.price)
                 .reduce((total, actual) => total + actual, 0)
-        }
-    },
-    data() {
-        return {
-            products: [
-                { id: 1, name: 'Product 1', amout: 7, price: 14.55 },
-                { id: 2, name: 'Product 2', amout: 10, price: 22.99 },
-                { id: 3, name: 'Product 3', amout: 1, price: 43.18 },
-            ]
+        },
+        products() {
+            return this.$store.state.products
         }
     }
 }

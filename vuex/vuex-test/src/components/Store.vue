@@ -24,13 +24,13 @@ export default {
         add() {
             const product = {
                 id: this.sequence,
-                nome: `Product ${this.sequence}`,
+                name: `Product ${this.sequence}`,
                 amout: this.amout,
                 price: this.price
             }
             this.sequence++
-            // eslint-disable-next-line
-            console.log(product)
+            
+            this.$store.state.products.push(product)
         }
     }
 }
