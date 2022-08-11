@@ -13,5 +13,10 @@ export default new Vuex.Store({
             return state.products.map(p => p.amout * p.price)
                 .reduce((total, actual) => total + actual, 0)
         }
+    },
+    mutations: {
+        addProduct(state, payload) {
+            state.products.push(payload)
+        }
     }
 })
