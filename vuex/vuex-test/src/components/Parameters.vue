@@ -18,7 +18,7 @@ export default {
     computed: {
         amount: {
             get() {
-                return this.$store.state.amount
+                return this.$store.state.parameters.amount
             },
             set(value){
                 this.$store.commit('setAmount', value)
@@ -26,7 +26,7 @@ export default {
         },
         price: {
             get() {
-                return this.$store.state.price
+                return this.$store.state.parameters.price
             },
             set(value){
                 this.$store.commit('setPrice', value)

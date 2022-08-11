@@ -21,10 +21,10 @@ export default {
     },
     computed: {
         amount() {
-            return this.$store.state.amount
+            return this.$store.state.parameters.amount
         },
         price() {
-            return this.$store.state.price
+            return this.$store.state.parameters.price
         }
     },
     methods: {
