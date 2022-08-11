@@ -1,5 +1,6 @@
 <template>
     <Panel title="Virtual Store" green>
+        <p style="margin: 10px 0px">{{ this.$store.getters.getVersionAppName }}</p>
         <div class="store">
             <span>Add</span>
             <input type="number" v-model.number="amount">
