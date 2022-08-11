@@ -12,7 +12,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    computed: mapGetters({
+    computed: mapGetters('cart',{
         total: 'totalValue'
     })
     //computed: mapGetters(['totalValue'])

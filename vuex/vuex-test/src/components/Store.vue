@@ -30,7 +30,8 @@ export default {
     },
     methods: {
         //...mapMutations(['addProduct']),
-        ...mapActions(['addProduct']),
+        ...mapActions('cart',['addProduct']),
+       // ...mapActions(['addProduct']),
         add() {
             const product = {
                 id: this.sequence,

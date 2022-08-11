@@ -1,4 +1,5 @@
 export default {
+    namespaced: true,
     state: {
         products: []
     },
@@ -19,5 +20,13 @@ export default {
                 /*context.*/commit('addProduct', payload)
             }, 1000)
         }
+        // addProduct: {
+        //     root: true,
+        //     handler({commit, state, rootState}/*context*/, payload) {
+        //         setTimeout(() => {
+        //             /*context.*/commit('addProduct', payload)
+        //         }, 1000)
+        //     }
+        // }
     }
 }
