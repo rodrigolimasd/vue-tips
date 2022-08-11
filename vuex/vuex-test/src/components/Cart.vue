@@ -5,14 +5,14 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Amout</th>
+                        <th>Amount</th>
                         <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="p in products" :key="p.name">
                         <td>{{ p.name }}</td>
-                        <td>{{ p.amout }}</td>
+                        <td>{{ p.amount }}</td>
                         <td>{{ p.price | money }}</td>
                     </tr>
                 </tbody>

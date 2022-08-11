@@ -2,7 +2,7 @@
     <Panel title="Virtual Store" green>
         <div class="store">
             <span>Add</span>
-            <input type="number" v-model.number="amout">
+            <input type="number" v-model.number="amount">
             <span>items of <strong>$</strong></span>
             <input type="number" v-model.number="price">
             <button @click="add">Now!</button>
@@ -16,9 +16,15 @@ import { mapMutations, mapActions } from 'vuex'
 export default {
     data() {
         return {
-            sequence: 1,
-            amout: 1,
-            price: 9.99,
+            sequence: 1
+        }
+    },
+    computed: {
+        amount() {
+            return this.$store.state.amount
+        },
+        price() {
+            return this.$store.state.price
         }
     },
     methods: {
@@ -28,7 +34,7 @@ export default {
             const product = {
                 id: this.sequence,
                 name: `Product ${this.sequence}`,
-                amout: this.amout,
+                amount: this.amount,
                 price: this.price
             }
             this.sequence++

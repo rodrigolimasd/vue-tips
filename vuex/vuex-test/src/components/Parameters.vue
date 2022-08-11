@@ -3,7 +3,7 @@
         <div class="parameters">
             <span>
                 <strong>Standard quantity: </strong> 
-                <input type="number" v-model="amout">
+                <input type="number" v-model="amount">
             </span>
             <span>
                 <strong>Standard price: </strong>
@@ -15,10 +15,22 @@
 
 <script>
 export default {
-    data() {
-        return {
-            amout: 0,
-            price: 0
+    computed: {
+        amount: {
+            get() {
+                return this.$store.state.amount
+            },
+            set(value){
+                this.$store.commit('setAmount', value)
+            }
+        },
+        price: {
+            get() {
+                return this.$store.state.price
+            },
+            set(value){
+                this.$store.commit('setPrice', value)
+            }
         }
     }
 }
